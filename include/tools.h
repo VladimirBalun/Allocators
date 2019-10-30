@@ -20,6 +20,8 @@
 #define SUCCESSFUL_RESULT 1
 #define FAIL_RESULT       0
 
+#define WITHOUT_ALIGNMENT 0u
+
 #define IS_EVEN_SIGNED_NUMBER(__number__) \
     (((__number__) & 1) == 0)
 

@@ -1,5 +1,7 @@
 # Allocators
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ovh0o2eioj04f610?svg=true)](https://ci.appveyor.com/project/VladimirBalun/allocators)
+
 When applications need more memory this can be allocated in the heap (rather than in the stack) in runtime. 
 This memory is called 'dynamic memory' because it can't be known at compile time and its need changes 
 during the execution. Our programs can ask for dynamic memory using 'malloc'. Malloc returns an address to 

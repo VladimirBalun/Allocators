@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include "pch.h"
 #include "linear_allocator.h"
 #include "details/tools.h"
 

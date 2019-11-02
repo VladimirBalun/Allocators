@@ -16,7 +16,7 @@
 
 cmake_minimum_required (VERSION 3.10)
 
-set (TESTS linear_allocator_test)
+set (TESTS linear_allocator_test stack_linked_list_test)
 
 foreach (__TEST__ ${TESTS})
     add_executable (${__TEST__} ${ALLOCATORS_TESTS_DIR}/${__TEST__}.c)

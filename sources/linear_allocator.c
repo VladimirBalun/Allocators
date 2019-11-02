@@ -15,12 +15,12 @@
  */
 
 #include "linear_allocator.h"
-#include "tools.h"
+#include "details/tools.h"
 
 #include <stdint.h>
 #include <string.h>
 
-int la_create(linear_allocator_t* p_allocator, const size_t sz_memory_size, const size_t sz_alignment)
+int allocators_la_create(linear_allocator_t* p_allocator, const size_t sz_memory_size, const size_t sz_alignment)
 {
     if (!p_allocator)
         return FAIL_RESULT;
@@ -43,7 +43,7 @@ int la_create(linear_allocator_t* p_allocator, const size_t sz_memory_size, cons
     return SUCCESSFUL_RESULT;
 }
 
-void* la_allocate(linear_allocator_t* p_allocator, const size_t sz_allocated_size)
+void* allocators_la_allocate(linear_allocator_t* p_allocator, const size_t sz_allocated_size)
 {
     if (!p_allocator)
         return NULL;
@@ -71,7 +71,7 @@ void* la_allocate(linear_allocator_t* p_allocator, const size_t sz_allocated_siz
     }
 }
 
-void la_clean(linear_allocator_t* p_allocator)
+void allocators_la_clean(linear_allocator_t* p_allocator)
 {
     if (!p_allocator)
         return;
@@ -83,7 +83,7 @@ void la_clean(linear_allocator_t* p_allocator)
 #endif // WITH_ZEROING
 }
 
-void la_destroy(linear_allocator_t* p_allocator)
+void allocators_la_destroy(linear_allocator_t* p_allocator)
 {
     if (!p_allocator)
         return;

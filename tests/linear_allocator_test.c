@@ -16,63 +16,63 @@
 
 #include <utest.h>
 
-#include "tools.h"
+#include "details/tools.h"
 #include "linear_allocator.h"
 
 UTEST(initialization_of_the_linear_allocator_with_1_kb_memory)
 {
     linear_allocator_t allocator;
-    const int result = la_create(&allocator, KILLOBYTE_SIZE, WITHOUT_ALIGNMENT);
+    const int result = allocators_la_create(&allocator, KILLOBYTE_SIZE, WITHOUT_ALIGNMENT);
     ASSERT_TRUE(result);
     ASSERT_EQ(allocator.sz_memory_total_size, KILLOBYTE_SIZE);
 
-    la_clean(&allocator);
-    la_destroy(&allocator);
+    allocators_la_clean(&allocator);
+    allocators_la_destroy(&allocator);
     ASSERT_TRUE(!allocator.p_memory_pointer);
 }
 
 UTEST(initializtion_of_the_linear_allocator_with_0_bytes_of_memory)
 {
     linear_allocator_t allocator;
-    const int result = la_create(&allocator, 0u, WITHOUT_ALIGNMENT);
+    const int result = allocators_la_create(&allocator, 0u, WITHOUT_ALIGNMENT);
     ASSERT_FALSE(result);
 }
 
 UTEST(initializtion_of_the_linear_allocator_with_not_even_alignment)
 {
     linear_allocator_t allocator;
-    const int result = la_create(&allocator, BYTES_16_SIZE, 1);
+    const int result = allocators_la_create(&allocator, BYTES_16_SIZE, 1);
     ASSERT_FALSE(result);
 }
 
 UTEST(initializtion_of_the_linear_allocator_with_aligment_more_than_memory_size)
 {
     linear_allocator_t allocator;
-    const int result = la_create(&allocator, BYTES_16_SIZE, KILLOBYTES_16_SIZE);
+    const int result = allocators_la_create(&allocator, BYTES_16_SIZE, KILLOBYTES_16_SIZE);
     ASSERT_FALSE(result);
 }
 
 UTEST(work_with_invallid_allocator)
 {
     linear_allocator_t* p_allocator = NULL;
-    const int result = la_create(p_allocator, BYTES_32_SIZE, WITHOUT_ALIGNMENT);
+    const int result = allocators_la_create(p_allocator, BYTES_32_SIZE, WITHOUT_ALIGNMENT);
     ASSERT_FALSE(result);
 }
 
 UTEST(allocation_of_the_5_double_elements_without_alignment)
 {
     linear_allocator_t allocator;
-    la_create(&allocator, BYTES_64_SIZE, WITHOUT_ALIGNMENT);
+    allocators_la_create(&allocator, BYTES_64_SIZE, WITHOUT_ALIGNMENT);
 
     const size_t sz_double_size = sizeof(double);
     for (size_t i = 1u; i <= 5; ++i)
     {
-        void* p_allocated_element = la_allocate(&allocator, sz_double_size);
+        void* p_allocated_element = allocators_la_allocate(&allocator, sz_double_size);
         ASSERT_EQ((p_allocated_element != NULL), (allocator.sz_memory_used_size == (sz_double_size * i)));
     }
 
-    la_clean(&allocator);
-    la_destroy(&allocator);
+    allocators_la_clean(&allocator);
+    allocators_la_destroy(&allocator);
 }
 
 UTEST_MAIN();

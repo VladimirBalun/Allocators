@@ -59,7 +59,7 @@ typedef struct linear_allocator {
  * will not be initialize, if 'sz_memory_size' is equal 0 or 'sz_alignment' is not even or
  * 'sz_memory_size' is less than 'sz_alignment' or system was not allocated necessary memory for allocator).
  */
-int la_create(linear_allocator_t* p_allocator, size_t sz_memory_size, size_t sz_alignment);
+int allocators_la_create(linear_allocator_t* p_allocator, size_t sz_memory_size, size_t sz_alignment);
 
 /*!
  * Function for allocation memory area from the linear allocator.
@@ -71,7 +71,7 @@ int la_create(linear_allocator_t* p_allocator, size_t sz_memory_size, size_t sz_
  * \return Returns allocated memory area, if the allocation was successfully, otherwise
  * returns NULL.
  */
-void* la_allocate(linear_allocator_t* p_allocator, size_t sz_allocated_size);
+void* allocators_la_allocate(linear_allocator_t* p_allocator, size_t sz_allocated_size);
 
 /*!
  * Function for cleaning all the elements of the linear allocator,
@@ -80,7 +80,7 @@ void* la_allocate(linear_allocator_t* p_allocator, size_t sz_allocated_size);
  *
  * \param[in] p_allocator Pointer on the linear allocator structure.
  */
-void la_clean(linear_allocator_t* p_allocator);
+void allocators_la_clean(linear_allocator_t* p_allocator);
 
 /*!
  * Function for destroying of the linear allocator, after
@@ -89,7 +89,7 @@ void la_clean(linear_allocator_t* p_allocator);
  *
  * \param[in] p_allocator Pointer on the linear allocator structure.
  */
-void la_destroy(linear_allocator_t* p_allocator);
+void allocators_la_destroy(linear_allocator_t* p_allocator);
 
 #ifdef __cplusplus
 }

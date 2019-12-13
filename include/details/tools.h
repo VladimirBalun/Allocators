@@ -28,17 +28,16 @@
 #define IS_EVEN_UNSIGNED_NUMBER(__number__) \
     (((__number__) & 1u) == 0u)
 
-#define BYTE_SIZE       1u
-#define BYTES_2_SIZE    (BYTE_SIZE * 2u)
-#define BYTES_4_SIZE    (BYTE_SIZE * 4u)
-#define BYTES_8_SIZE    (BYTE_SIZE * 8u)
-#define BYTES_16_SIZE   (BYTE_SIZE * 16u)
-#define BYTES_32_SIZE   (BYTE_SIZE * 32u)
-#define BYTES_64_SIZE   (BYTE_SIZE * 64u)
-#define BYTES_128_SIZE  (BYTE_SIZE * 128u)
-#define BYTES_256_SIZE  (BYTE_SIZE * 256u)
-#define BYTES_512_SIZE  (BYTE_SIZE * 512u)
-#define BYTES_1024_SIZE (BYTE_SIZE * 1024u)
+#define BYTES_2_SIZE    (1u * 2u)
+#define BYTES_4_SIZE    (1u * 4u)
+#define BYTES_8_SIZE    (1u * 8u)
+#define BYTES_16_SIZE   (1u * 16u)
+#define BYTES_32_SIZE   (1u * 32u)
+#define BYTES_64_SIZE   (1u * 64u)
+#define BYTES_128_SIZE  (1u * 128u)
+#define BYTES_256_SIZE  (1u * 256u)
+#define BYTES_512_SIZE  (1u * 512u)
+#define BYTES_1024_SIZE (1u * 1024u)
 
 #define KILLOBYTE_SIZE       BYTES_1024_SIZE
 #define KILLOBYTES_2_SIZE    (KILLOBYTE_SIZE * 2u)

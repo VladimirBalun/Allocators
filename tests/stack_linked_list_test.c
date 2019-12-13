@@ -18,7 +18,7 @@
 
 #include "details/stack_linked_list.h"
 
-UTEST(work_with_invallid_stack_linked_list)
+UTEST(using, work_with_invallid_stack_linked_list)
 {
     node_t tmp_node;
     stack_linked_list_t* p_sll = NULL;
@@ -34,7 +34,7 @@ UTEST(work_with_invallid_stack_linked_list)
     ASSERT_FALSE(p_top_node);
 }
 
-UTEST(work_with_invallid_node)
+UTEST(using, work_with_invallid_node)
 {
     node_t* p_node = NULL;
     stack_linked_list_t sll;
@@ -43,7 +43,7 @@ UTEST(work_with_invallid_node)
     ASSERT_FALSE(n_result);
 }
 
-UTEST(checking_valid_linking)
+UTEST(using, checking_valid_linking)
 {
     node_t first_node;
     node_t second_node;
@@ -52,7 +52,7 @@ UTEST(checking_valid_linking)
     allocators_details_sll_push(&sll, &first_node);
     allocators_details_sll_push(&sll, &second_node);
     void* p_top_node = allocators_details_sll_pop(&sll);
-    ASSERT_EQ(&second_node, p_top_node);
+    ASSERT_TRUE(&second_node == p_top_node);
 }
 
 UTEST_MAIN()

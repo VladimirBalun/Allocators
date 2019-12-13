@@ -19,7 +19,7 @@
 #include "details/tools.h"
 #include "linear_allocator.h"
 
-UTEST(initialization_of_the_linear_allocator_with_1_kb_memory)
+UTEST(initialization, initialization_of_the_linear_allocator_with_1_kb_memory)
 {
     linear_allocator_t allocator;
     const int result = allocators_la_create(&allocator, KILLOBYTE_SIZE, WITHOUT_ALIGNMENT);
@@ -31,35 +31,35 @@ UTEST(initialization_of_the_linear_allocator_with_1_kb_memory)
     ASSERT_TRUE(!allocator.p_memory_pointer);
 }
 
-UTEST(initializtion_of_the_linear_allocator_with_0_bytes_of_memory)
+UTEST(initializtion, initializtion_of_the_linear_allocator_with_0_bytes_of_memory)
 {
     linear_allocator_t allocator;
     const int result = allocators_la_create(&allocator, 0u, WITHOUT_ALIGNMENT);
     ASSERT_FALSE(result);
 }
 
-UTEST(initializtion_of_the_linear_allocator_with_not_even_alignment)
+UTEST(initialization, initializtion_of_the_linear_allocator_with_not_even_alignment)
 {
     linear_allocator_t allocator;
     const int result = allocators_la_create(&allocator, BYTES_16_SIZE, 1);
     ASSERT_FALSE(result);
 }
 
-UTEST(initializtion_of_the_linear_allocator_with_aligment_more_than_memory_size)
+UTEST(initialization, initializtion_of_the_linear_allocator_with_aligment_more_than_memory_size)
 {
     linear_allocator_t allocator;
     const int result = allocators_la_create(&allocator, BYTES_16_SIZE, KILLOBYTES_16_SIZE);
     ASSERT_FALSE(result);
 }
 
-UTEST(work_with_invallid_allocator)
+UTEST(using, work_with_invallid_allocator)
 {
     linear_allocator_t* p_allocator = NULL;
     const int result = allocators_la_create(p_allocator, BYTES_32_SIZE, WITHOUT_ALIGNMENT);
     ASSERT_FALSE(result);
 }
 
-UTEST(allocation_of_the_5_double_elements_without_alignment)
+UTEST(allocation, allocation_of_the_5_double_elements_without_alignment)
 {
     linear_allocator_t allocator;
     allocators_la_create(&allocator, BYTES_64_SIZE, WITHOUT_ALIGNMENT);

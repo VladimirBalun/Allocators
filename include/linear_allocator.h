@@ -18,6 +18,7 @@
 #define LINEAR_ALLOCATOR_H
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,10 +42,9 @@ extern "C" {
  *  zeroing of the unused memory(useful for debugging).
  */
 typedef struct linear_allocator {
-    void*  p_memory_pointer;
-    size_t sz_memory_total_size;
-    size_t sz_memory_used_size;
-    size_t sz_alignment;
+    uint8_t* p_memory_pointer;
+    size_t   sz_memory_total_size;
+    size_t   sz_memory_used_size;
 } linear_allocator_t;
 
 /*!
@@ -53,13 +53,10 @@ typedef struct linear_allocator {
  * 
  * \param[in] p_allocator Pointer on the linear allocator structure.
  * \param[in] sz_memory_size Total memory size for linear allocator(size is fixed).
- * \param[in] sz_alignment Alignment for each allocation, if 'sz_alignment' is equal 0, then
- * linear works without alignment of the its elements.
  * \return Returns 1, if the linear allocator was initialized successfully, otherwise returns 0(the linear allocator
- * will not be initialize, if 'sz_memory_size' is equal 0 or 'sz_alignment' is not even or
- * 'sz_memory_size' is less than 'sz_alignment' or system was not allocated necessary memory for allocator).
+ * will not be initialize, if 'sz_memory_size' is equal 0 or system was not allocated necessary memory for allocator).
  */
-int allocators_la_create(linear_allocator_t* p_allocator, size_t sz_memory_size, size_t sz_alignment);
+int allocators_la_create(linear_allocator_t* p_allocator, size_t sz_memory_size);
 
 /*!
  * Function for allocation memory area from the linear allocator.
@@ -68,10 +65,11 @@ int allocators_la_create(linear_allocator_t* p_allocator, size_t sz_memory_size,
  * \warning NULL can be returned.
  * \param[in] p_allocator Pointer on the linear allocator structure.
  * \param[in] sz_allocated_size Size of the allocated memory area.
+ * \param[in] sz_alignment Alignment for memory block in the allocator.
  * \return Returns allocated memory area, if the allocation was successfully, otherwise
  * returns NULL.
  */
-void* allocators_la_allocate(linear_allocator_t* p_allocator, size_t sz_allocated_size);
+void* allocators_la_allocate(linear_allocator_t* p_allocator, size_t sz_allocated_size, size_t sz_alignment);
 
 /*!
  * Function for cleaning all the elements of the linear allocator,

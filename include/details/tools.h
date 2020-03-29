@@ -75,12 +75,6 @@
 #define GIGABYTES_512_SIZE  (GIGABYTE_SIZE * 512u)
 #define GIGABYTES_1024_SIZE (GIGABYTE_SIZE * 1024u)
 
-// Average cache parameters
-#define CACHE_L1_SIZE   KILLOBYTES_32_SIZE
-#define CACHE_L2_SIZE   KILLOBYTES_512_SIZE
-#define CACHE_L3_SIZE   MEGABYTES_64_SIZE
-#define CACHE_LINE_SIZE BYTES_64_SIZE
-
-#define VIRTUAL_PAGE_SIZE KILLOBYTES_4_SIZE
+size_t calculate_padding(size_t sz_not_aligned_address, size_t sz_alignment);
 
 #endif // TOOLS_H

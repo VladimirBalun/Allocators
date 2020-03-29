@@ -2,6 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a1b7ace732d409ea84d34316e721935)](https://www.codacy.com/manual/VladimirBalun/Allocators?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VladimirBalun/Allocators&amp;utm_campaign=Badge_Grade)
 [![Build status](https://ci.appveyor.com/api/projects/status/ovh0o2eioj04f610?svg=true)](https://ci.appveyor.com/project/VladimirBalun/allocators)
+[![Build Status](https://travis-ci.org/VladimirBalun/Allocators.svg?branch=master)](https://travis-ci.org/VladimirBalun/Allocators)
 
 When applications need more memory this can be allocated in the heap (rather than in the stack) in runtime. 
 This memory is called 'dynamic memory' because it can't be known at compile time and its need changes 
